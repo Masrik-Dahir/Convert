@@ -4,7 +4,6 @@ import re
 from datetime import datetime
 import datetime
 from random import randint
-import csv
 from csv import reader
 import MySQLdb
 import pandas as pd
