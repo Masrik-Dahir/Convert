@@ -1,0 +1,16 @@
+*.csv
+*.json
+*.secret
+*.txt
+*.pdf
+*.sh
+*.docx
+*.pptx
+*.class
+*.xml
+*.html
+*.spec
+*.ui
+.idea/*
+__pycache__/*
+build/*
