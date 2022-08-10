@@ -3,7 +3,6 @@
 *.secret
 *.txt
 *.pdf
-*.sh
 *.docx
 *.pptx
 *.class
