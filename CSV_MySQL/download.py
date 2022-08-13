@@ -39,12 +39,14 @@ def main():
         for i in tables:
             try:
                 table_name = str(i)
-                cursor2.execute("select * from {};".format(table_name))
-                with open(desired_path + str(i) + ".csv", "w", newline='') as csv_file:
+                cursor2.execute("select * from `{}`;".format(table_name))
+                with open(desired_path + str(i)+ ".csv", "w", newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow([i[0] for i in cursor2.description])
                     csv_writer.writerows(cursor2)
+                print("Downloaded --> " + desired_path + str(i) + ".csv")
             except:
+                print("Can't Downloaded --> " + desired_path + str(i) + ".csv")
                 None
     else:
         cursor = db.cursor()
