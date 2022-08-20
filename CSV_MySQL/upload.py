@@ -161,6 +161,7 @@ def populate_table(file_name, tbl_name):
             None
 
 def main():
+    copy(store_path, path)
     if len(sys.argv) > 1:
         file_name = path + '\\\\' + str(sys.argv[1]) + ".csv"
         tbl_name = file_name.split("\\")[-1].split('.')[0].strip()
@@ -175,7 +176,5 @@ def main():
             print(tbl_name)
             create_table(file_name, tbl_name)
             populate_table(file_name, tbl_name)
-
-    copy(path, store_path)
 
 main()
