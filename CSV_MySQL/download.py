@@ -35,11 +35,12 @@ def main():
         for x in myresult:
             tables.append(x[0])
 
-        cursor2 = db.cursor()
+        cursor2 = db.cursor(buffered=True,dictionary=True)
         for i in tables:
             try:
                 table_name = str(i)
-                cursor2.execute("select * from `{}`;".format(table_name))
+                sql = "select * from `{}`;".format(table_name)
+                cursor2.execute(sql)
                 with open(desired_path + str(i)+ ".csv", "w", newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow([i[0] for i in cursor2.description])
@@ -56,15 +57,17 @@ def main():
         tables = []
         for x in myresult:
             tables.append(x[0])
-        cursor2 = db.cursor()
+        cursor2 = db.cursor(buffered=True,dictionary=True)
         try:
             table_name = str(sys.argv[1])
-            cursor2.execute("select * from {};".format(table_name))
+            cursor2.execute("select * from `{}`;".format(table_name))
             with open(desired_path + table_name + ".csv", "w", newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow([i[0] for i in cursor2.description])
                 csv_writer.writerows(cursor2)
+            print("Downloaded --> " + desired_path + str(table_name) + ".csv")
         except:
+            print("Can't Downloaded --> " + desired_path + str(table_name) + ".csv")
             None
 
     copy(path, store_path)
