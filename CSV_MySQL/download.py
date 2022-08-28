@@ -35,7 +35,7 @@ def main():
         for x in myresult:
             tables.append(x[0])
 
-        cursor2 = db.cursor(buffered=True,dictionary=True)
+        cursor2 = db.cursor(buffered=True)
         for i in tables:
             try:
                 table_name = str(i)
@@ -57,7 +57,7 @@ def main():
         tables = []
         for x in myresult:
             tables.append(x[0])
-        cursor2 = db.cursor(buffered=True,dictionary=True)
+        cursor2 = db.cursor(buffered=True)
         try:
             table_name = str(sys.argv[1])
             cursor2.execute("select * from `{}`;".format(table_name))
