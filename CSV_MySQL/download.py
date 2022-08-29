@@ -17,10 +17,10 @@ argument_path = repr(sys.argv[0])
 file_path = repr(__file__)
 folder_path = pev(file_path)
 call_path = repr(os.getcwd())
-secret_path = pev(file_path, 2) + "secret.txt"
-path_path = pev(file_path, 2) + "path.txt"
-stock_path = pev(file_path, 2) + "stock.txt"
-csv_path = pev(file_path, 2) + "Excel"
+secret_path = pev(file_path, 3) + "cache\\secret.txt"
+path_path = pev(file_path, 3) + "cache\\path.txt"
+stock_path = pev(file_path, 3) + "cache\\stock.txt"
+csv_path = pev(file_path, 3) + "Excel"
 
 f = open(str(secret_path))
 data = f.read()
