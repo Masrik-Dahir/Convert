@@ -4,7 +4,25 @@ import mysql.connector
 import sys
 import distutils.dir_util
 
-f = open(str(os.getcwd()) + '\\secret.txt')
+def pev(s, num=1):
+    ele = (s.split("\\\\"))
+    res = ""
+    for i in ele[:-num]:
+        val = i.replace('\'', "")
+        res += val + "\\\\"
+    return res
+
+# Path
+argument_path = repr(sys.argv[0])
+file_path = repr(__file__)
+folder_path = pev(file_path)
+call_path = repr(os.getcwd())
+secret_path = pev(file_path, 2) + "secret.txt"
+path_path = pev(file_path, 2) + "path.txt"
+stock_path = pev(file_path, 2) + "stock.txt"
+csv_path = pev(file_path, 2) + "Excel"
+
+f = open(str(secret_path))
 data = f.read()
 user = data.split('\n')[0]
 password = data.split('\n')[1]
@@ -14,7 +32,7 @@ db = mysql.connector.connect(
     user=user, password=password, host=host, database=database)
 
 
-f2 = open(str(os.getcwd()) + '\\path.txt')
+f2 = open(str(path_path))
 data2 = f2.read()
 path = str(data2.split('\n')[0])
 store_path = str(data2.split('\n')[1])
